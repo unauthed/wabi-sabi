@@ -31,20 +31,20 @@
                      <li class="active"><a href="/">Home</a></li>
                      <li><a href="about.html">About</a></li>
                      <li class="dropdown">
-                        <a href="http://localhost:8080/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           <li class="dropdown-header">Wabi Services</li>
-                           <li><a href="http://localhost:8080/">Ingest</a></li>
-                           <li><a href="http://localhost:8080/">Expose</a></li>
-                           <li><a href="http://localhost:8080/">Search</a></li>
+                           <li><a href="http://localhost:9081/" target="_blank">Ingest</a></li>
+                           <li><a href="http://localhost:9082/" target="_blank">Expose</a></li>
+                           <li><a href="http://localhost:9088/" target="_blank">Search</a></li>
                            <li role="separator" class="divider"></li>
                            <li class="dropdown-header">Sabi Services</li>
-                           <li><a href="http://localhost:8080/">Mailer</a></li>
+                           <li><a href="http://localhost:8080/" target="_blank">Mailer</a></li>
                         </ul>
                      </li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
-                     <li><a href="http://localhost">Sign-In</a></li>
+                     <li><a href="/">Sign-In</a></li>
                   </ul>
                </div>
                <!--/.nav-collapse -->
@@ -79,7 +79,7 @@
             </div>
             <div class="panel-body">
                <div id="dropzone">
-                  <form action="http://wabi_ingest:9081/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
+                  <form action="http://localhost:9081/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
                      <div class="dz-message needsclick">Drop files here or click to upload.<br><span class="note needsclick">(The max file size for this demo is <strong>256MB</strong>.)</span></div>
                   </form>
                </div>
