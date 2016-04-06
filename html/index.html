@@ -2,15 +2,18 @@
 <html lang="en">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <link rel="icon" href="favicon.ico">
+      <meta name="description" content="Open source platform for open access publishing of great simplicity and beauty.">
+      <meta name="author" content="Urchinly">
       <title>Wabi-Sabi</title>
       <link href="assets/bootstrap.min.css" rel="stylesheet">
       <link href="assets/dropzone.css" rel="stylesheet">
       <link href="assets/style.css" rel="stylesheet">
+      <link rel="icon" type="image/png" href="assets/favicon-32x32.png" sizes="32x32">
+      <link rel="icon" type="image/png" href="assets/favicon-194x194.png" sizes="194x194">
+      <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
+      <link rel="icon" type="image/png" href="assets/android-chrome-192x192.png" sizes="192x192">
+      <link rel="icon" type="image/png" href="assets/favicon-16x16.png" sizes="16x16">
    </head>
    <body>
       <div class="container">
@@ -29,7 +32,6 @@
                <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav">
                      <li class="active"><a href="/">Home</a></li>
-                     <li><a href="about.html">About</a></li>
                      <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -44,7 +46,7 @@
                      </li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
-                     <li><a href="/">Sign-In</a></li>
+                    <li><a href="about.html">About</a></li>
                   </ul>
                </div>
                <!--/.nav-collapse -->
@@ -65,9 +67,9 @@
             <div class="row">
                <div class="col-lg-12">
                   <div class="input-group input-group-lg">
-                     <input type="text" class="form-control input-lg" id="search-church" placeholder="Search for files and file content...">
+                     <input type="text" class="form-control input-lg" id="search-text" autofocus placeholder="Search for files and file content...">
                      <span class="input-group-btn">
-                     <button class="btn btn-default btn-lg" type="submit">Search</button>
+                     <button class="btn btn-default btn-lg" id="search-button">Search</button>
                      </span>
                   </div>
                </div>
@@ -75,7 +77,7 @@
          </div>
          <div class="panel panel-default">
             <div class="panel-heading">
-               <h3 class="panel-title">Wabi Ingest service for file upload.</h3>
+               <h3 class="panel-title">Wabi Ingest service for file upload</h3>
             </div>
             <div class="panel-body">
                <div id="dropzone">
@@ -87,13 +89,14 @@
          </div>
          <div class="panel panel-default">
             <div class="panel-heading">
-               <h3 class="panel-title">Wabi Expose service for file download.</h3>
+               <h3 class="panel-title">Wabi Expose service for file download</h3>
             </div>
             <div class="panel-body">
                <ol class="breadcrumb">
-                  <li><a href="#">Assets</a></li>
+                  <li><a href="/">Assets</a></li>
                   <li class="active">2016</li>
                </ol>
+               <h5 class="expose-content">Empty vault... </h5>
             </div>
          </div>
       </div>
@@ -101,5 +104,6 @@
       <script src="assets/jquery.min.js"></script>
       <script src="assets/bootstrap.min.js"></script>
       <script src="assets/dropzone.js"></script>
+      <script src="assets/script.js"></script>
    </body>
 </html>
