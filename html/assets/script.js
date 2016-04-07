@@ -10,6 +10,11 @@ $(document).ready(function() {
     }).then(function(data) {
       console.debug(data);
 
+      if (!data.content.length) {
+          $(".expose-content").replaceWith("<h5 class='expose-content'>Vault is empty...</h5>");
+          return;
+      }
+
       var tmp = "<ul class='list-group expose-content'>";
 
       for(datum of data.content) {
@@ -30,12 +35,17 @@ $(document).ready(function() {
   });
 
   $("#search-button").click(function() {
-    clearInterval(intervalId);
+    if (intervalId !== undefined) {
+      clearInterval(intervalId);
+      intervalId = undefined;
+    }
 
     var query = $("#search-text").val().trim();
 
-    if (query === undefined) {
+    if (!query || query.length === 0) {
       intervalId = setInterval(exposeFiles, intervalDuration);
+      alert("Please enter a valid search query.");
+      $("#search-text").focus();
       return;
     }
 
@@ -62,6 +72,20 @@ $(document).ready(function() {
 
       $(".expose-content").replaceWith(tmp);
     });
+
+    $("#search-text").focus();
   });
+
+  $("#clear-button").click(function() {
+    if (intervalId === undefined) {
+      intervalId = setInterval(exposeFiles, intervalDuration);
+    }
+
+    $("#search-text").val("");
+    $("#search-text").focus();
+    exposeFiles();
+  });
+
+  exposeFiles();
 
 });
