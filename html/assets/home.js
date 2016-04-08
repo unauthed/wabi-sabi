@@ -18,7 +18,7 @@ $(document).ready(function() {
       var tmp = "<ul class='list-group expose-content'>";
 
       for(datum of data.content) {
-        tmp += "<li class='list-group-item'><span class='badge' title='" + datum.price + " Bytes'>" + bytesToSize(datum.price) + "</span><a href='//" + location.host + ":9082/assets/" + datum.id + "' target='_blank'>" + datum.fileName + "</a></li>"
+        tmp += "<li class='list-group-item'><span class='badge' title='" + datum.fileSize + " Bytes'>" + bytesToSize(datum.fileSize) + "</span><a href='//" + location.host + ":9082/download/" + datum.id + "' target='_blank'>" + datum.fileName + "</a></li>"
       }
 
       tmp += "</ul>";
@@ -65,7 +65,7 @@ $(document).ready(function() {
       var tmp = "<ul class='list-group expose-content'>";
 
       for(datum of data) {
-        tmp += "<li class='list-group-item'><span class='badge' title='" + datum.price + " Bytes'>" + bytesToSize(datum.price) + "</span><a href='//" + location.host + ":9082/assets/" + datum.id + "' target='_blank'>" + datum.fileName + "</a></li>"
+        tmp += "<li class='list-group-item'><span class='badge' title='" + datum.fileSize + " Bytes'>" + bytesToSize(datum.fileSize) + "</span><a href='//" + location.host + ":9082/download/" + datum.id + "' target='_blank'>" + datum.fileName + "</a></li>"
       }
 
       tmp += "</ul>";
