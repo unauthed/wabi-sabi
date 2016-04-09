@@ -1,0 +1,7 @@
+{
+  "wabiServices": ["http://localhost:9081", "http://localhost:9082", "http://localhost:9088"],
+  "sabiServices": ["http://localhost:7081"],
+  "mongoCluster": ["http://localhost:27017"],
+  "rabbitmqCluster": ["http://localhost:15672"],
+  "elasticsearchCluster": ["http://localhost:9300"]
+}

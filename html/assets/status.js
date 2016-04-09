@@ -1,32 +1,52 @@
 
 $(document).ready(function() {
 
-  var intervalDuration = 6000;
+  var services = null;
+  var wabiServicesData = [];
+  var intervalDuration = 30000;
   var intervalId = setInterval(updateStatus, intervalDuration);
 
-  function updateStatus () {
+  var template = $.templates("#wabiServicesTemplate");
+  template.link("#wabiServicesContainer", wabiServicesData);
+
+  function updateServiceStatus (service) {
     $.ajax({
-        url: "//" + location.host + ":9081/info"
+        url: service + "/info"
     }).then(function(data) {
-      console.debug(data);
-
-      if (!data.content.length) {
-          $(".expose-content").replaceWith("<h5 class='expose-content'>Service not responding...</h5>");
-          return;
-      }
-
-      var tmp = "<ul class='list-group expose-content'>";
-
-      for(datum of data.content) {
-        tmp += "<li class='list-group-item'><span class='badge' title='" + datum.price + " Bytes'>" + bytesToSize(datum.price) + "</span><a href='//" + location.host + ":9082/assets/" + datum.id + "' target='_blank'>" + datum.fileName + "</a></li>"
-      }
-
-      tmp += "</ul>";
-
-      $(".expose-content").replaceWith(tmp);
+      $.observable(wabiServicesData).insert(data);
     });
   }
 
-  updateStatus();
+  function updateWabiStatus() {
+    for (service of services.wabiServices) {
+      $.observable(wabiServicesData).remove(0);
+      updateServiceStatus(service);
+    }
+
+    console.log(wabiServicesData);
+  }
+
+  function updateSabiStatus() {
+  }
+
+  function updateStatus () {
+    updateWabiStatus();
+    updateSabiStatus();
+  }
+
+  $('.closeall').click(function(){
+    $('.panel-collapse.in')
+      .collapse('hide');
+  });
+  $('.openall').click(function(){
+    $('.panel-collapse:not(".in")')
+      .collapse('show');
+  });
+
+  $.getJSON("status.json", function(json) {
+    console.log(json);
+    services = json;
+    updateStatus();
+  });
 
 });
