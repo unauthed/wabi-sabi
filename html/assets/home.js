@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   function exposeFiles () {
     $.ajax({
-        url: "//" + location.host + ":9082/assets"
+        url: "//" + location.hostname + ":9082/assets"
     }).then(function(data) {
       console.debug(data);
 
@@ -18,7 +18,7 @@ $(document).ready(function() {
       var tmp = "<ul class='list-group expose-content'>";
 
       for(datum of data.content) {
-        tmp += "<li class='list-group-item'><span class='badge' title='" + datum.fileSize + " Bytes'>" + bytesToSize(datum.fileSize) + "</span><a href='//" + location.host + ":9082/download/" + datum.id + "' target='_blank'>" + datum.fileName + "</a></li>"
+        tmp += "<li class='list-group-item'><span class='badge' title='" + datum.fileSize + " Bytes'>" + bytesToSize(datum.fileSize) + "</span><a href='//" + location.hostname + ":9082/download/" + datum.id + "' target='_blank'>" + datum.fileName + "</a></li>"
       }
 
       tmp += "</ul>";
@@ -52,7 +52,7 @@ $(document).ready(function() {
     $(".expose-content").replaceWith("<h5 class='expose-content'>Searching vault...</h5>");
 
     $.ajax({
-        url: "//" + location.host + ":9088/search?userId=" + encodeURIComponent(query)
+        url: "//" + location.hostname + ":9088/search?userId=" + encodeURIComponent(query)
     }).then(function(data) {
       console.debug(data);
 
@@ -65,7 +65,7 @@ $(document).ready(function() {
       var tmp = "<ul class='list-group expose-content'>";
 
       for(datum of data) {
-        tmp += "<li class='list-group-item'><span class='badge' title='" + datum.fileSize + " Bytes'>" + bytesToSize(datum.fileSize) + "</span><a href='//" + location.host + ":9082/download/" + datum.id + "' target='_blank'>" + datum.fileName + "</a></li>"
+        tmp += "<li class='list-group-item'><span class='badge' title='" + datum.fileSize + " Bytes'>" + bytesToSize(datum.fileSize) + "</span><a href='//" + location.hostname + ":9082/download/" + datum.id + "' target='_blank'>" + datum.fileName + "</a></li>"
       }
 
       tmp += "</ul>";
@@ -97,7 +97,7 @@ $(document).ready(function() {
   });
 
   Dropzone.autoDiscover = false;
-  var theDropzone = new Dropzone("#upload-form", { url: "//" + location.host + ":9081/upload", maxFilesize: 100});
+  var theDropzone = new Dropzone("#upload-form", { url: "//" + location.hostname + ":9081/upload", maxFilesize: 100});
 
   theDropzone.on("addedfile", function(file) {
     exposeFiles();
