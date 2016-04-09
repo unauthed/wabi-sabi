@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Open source Digital Asset Management platform of great simplicity and beauty.">
       <meta name="author" content="Urchinly">
-      <title>Wabi-Sabi DAM</title>
+      <title>Stream - Wabi-Sabi DAM</title>
       <link href="assets/bootstrap.min.css" rel="stylesheet">
       <link href="assets/dropzone.css" rel="stylesheet">
       <link href="assets/style.css" rel="stylesheet">
@@ -58,17 +58,19 @@
            <img src="favicon-96x96.png">
            Open source Digital Asset Management platform of great simplicity and beauty.
          </p>
-
-         <div class="alert alert-warning alert-dismissible" role="alert">
-           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-           <strong>Asset not found</strong> - The file exist in our database but not on our file system!
-         </div>
-
+         <div id="eventsContainer"></div>
       </div> <!-- /container -->
+      <script id="eventTemplate" type="text/x-jsrender">
+        <div class="alert alert-info alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>TODO</strong> - {{:date}}
+        </div>
+      </script>
       <script src="assets/jquery.min.js"></script>
+      <script src="assets/jsviews.min.js"></script>
       <script src="assets/bootstrap.min.js"></script>
       <script src="assets/sockjs-0.3.4.js"></script>
-      <script src="assets/stomp.js"></script>
+      <script src="assets/stomp.min.js"></script>
       <script src="assets/stream.js"></script>
    </body>
 </html>
