@@ -15,3 +15,8 @@ Wabi modules form the core components of our digital asset management solution.
 Sabi means things whose beauty stems from age. It refers to the patina of age, and the concept that changes due to use may make an object more beautiful and valuable. This also incorporates an appreciation of the cycles of life, as well as careful, artful mending of damage.
 
 Sabi modules form the custom components of our digital asset management solution.
+
+### Run WABI-SABI images in the Docker Cloud
+
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
+
