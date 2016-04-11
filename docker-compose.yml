@@ -20,18 +20,19 @@
 version: "2"
 
 services:
-  nginx:
-    image: urchinly/sabi-nginx
+  portal:
+    image: urchinly/wabi-portal
     ports:
      - "9080:80"
+     - "9443:443"
     volumes:
-     - shared-volume:/data/vault
+     - /tmp
     depends_on:
      - ingest
      - expose
      - search
     networks:
-     - wabi-tier
+     - sabi-tier
 
   ingest:
     image: urchinly/wabi-ingest
@@ -75,7 +76,6 @@ services:
     environment:
      - SPRING_PROFILES_ACTIVE=prod
      - SPRING_RABBITMQ_ADDRESSES=wabi_rabbitmq_1,wabi_rabbitmq_2,wabi_rabbitmq_3
-     - SPRING_DATA_SOLR_HOST=http://wabi_elasticsearch_1
     ports:
      - "9088:8088"
     volumes:
@@ -83,6 +83,40 @@ services:
     depends_on:
      - rabbitmq
      - elasticsearch
+    networks:
+     - sabi-tier
+     - wabi-tier
+
+  events:
+    image: urchinly/sabi-events
+    environment:
+     - SPRING_PROFILES_ACTIVE=prod
+     - SPRING_DATA_MONGODB_URI=mongodb://wabi_mongo_1/wabi
+     - SPRING_RABBITMQ_ADDRESSES=wabi_rabbitmq_1,wabi_rabbitmq_2,wabi_rabbitmq_3
+    ports:
+      - "7081:7081"
+    volumes:
+     - /tmp
+    depends_on:
+     - rabbitmq
+     - mongo
+    networks:
+     - sabi-tier
+     - wabi-tier
+
+  mailer:
+    image: urchinly/sabi-mailer
+    environment:
+     - SPRING_PROFILES_ACTIVE=prod
+     - SPRING_DATA_MONGODB_URI=mongodb://wabi_mongo_1/wabi
+     - SPRING_RABBITMQ_ADDRESSES=wabi_rabbitmq_1,wabi_rabbitmq_2,wabi_rabbitmq_3
+    ports:
+      - "7082:7082"
+    volumes:
+     - /tmp
+    depends_on:
+     - rabbitmq
+     - mongo
     networks:
      - sabi-tier
      - wabi-tier

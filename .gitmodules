@@ -1,0 +1,6 @@
+[submodule "wabi"]
+	path = wabi
+	url = git@github.com:urchinly/wabi.git
+[submodule "sabi"]
+	path = sabi
+	url = git@github.com:urchinly/sabi.git
