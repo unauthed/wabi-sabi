@@ -18,7 +18,10 @@ Sabi modules form the custom components of our digital asset management solution
 
 ### Run WAB-SABI images locally
 
-` docker-compose up `
+```
+docker-compose up
+http://localhost:9080/
+```
 
 ### Run WABI-SABI images in the Docker Cloud
 
@@ -27,5 +30,5 @@ Sabi modules form the custom components of our digital asset management solution
 
 ### Building and running WABI-SABI from source
 
-This repository is the parent repository of all wabi-sabi repositories. We are using Git submodules to group our various projects; however we recommend to clone and build each repository separately. Please see the submodules README files for instructions on how to build and run them.
+This repository is the parent repository for all wabi-sabi repositories. We are using Git submodules to group our various projects; however we recommend to clone and build each repository separately. Please see the submodules README files for instructions on how to build and run them.
 
