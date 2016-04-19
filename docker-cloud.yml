@@ -18,7 +18,7 @@
 #
 
 elasticsearch:
-  image: 'elasticsearch:1.5.2'
+  image: urchinly/wabi-elasticsearch
   labels:
     uk.urchinly.tech: data
   ports:
@@ -85,6 +85,7 @@ search:
   environment:
     - 'SPRING_PROFILES_ACTIVE=prod'
     - 'SPRING_RABBITMQ_ADDRESSES=rabbitmq-1'
+    - 'SPRING_ELASTICSEARCH_ADDRESSES=elasticsearch-1:9300'
   links:
     - elasticsearch
     - rabbitmq
