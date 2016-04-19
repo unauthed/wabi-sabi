@@ -16,6 +16,13 @@ Sabi means things whose beauty stems from age. It refers to the patina of age, a
 
 Sabi modules form the custom components of our digital asset management solution.
 
+### WAB-SABI Docker images
+
+[![](https://imagelayers.io/badge/urchinly/wabi-ingest:latest.svg)](https://imagelayers.io/?images=urchinly/wabi-ingest:latest 'File upload service.')
+[![](https://imagelayers.io/badge/urchinly/wabi-ingest:latest.svg)](https://imagelayers.io/?images=urchinly/wabi-expose:latest 'File download service.')
+[![](https://imagelayers.io/badge/urchinly/wabi-ingest:latest.svg)](https://imagelayers.io/?images=urchinly/wabi-search:latest 'File search service.')
+
+
 ### Run WAB-SABI images locally
 
 ```
