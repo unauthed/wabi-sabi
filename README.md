@@ -23,7 +23,8 @@ Sabi modules form the custom components of our digital asset management solution
 
 ```
 docker-compose up
-http://localhost:9999/
+http://localhost:8888/
+http://localhost:8888/stats
 ```
 
 ### Run WABI-SABI images in the Docker Cloud
