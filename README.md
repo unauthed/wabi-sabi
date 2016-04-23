@@ -33,7 +33,6 @@ http://localhost:8888/stats
 
 [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
 
-
 ### Building and running WABI-SABI from source
 
 This repository is the parent repository of all wabi-sabi repositories. We are using Git submodules to group our various projects; however we recommend to clone and build each repository separately. Please see the submodules README files for instructions on how to build and run them.
