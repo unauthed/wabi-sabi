@@ -43,7 +43,7 @@ Checkout all submodules
 
 * `git submodule update --init --recursive`
 
-Update submodules
+Update all submodules
 
 * `git submodule update --rebase --remote`
 
