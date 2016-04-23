@@ -35,3 +35,30 @@ http://localhost:9999/
 
 This repository is the parent repository of all wabi-sabi repositories. We are using Git submodules to group our various projects; however we recommend to clone and build each repository separately. Please see the submodules README files for instructions on how to build and run them.
 
+### Git Tips
+
+Checkout all submodules
+
+* `git submodule update --init --recursive`
+
+Update submodules
+
+* `git submodule update --rebase --remote`
+
+### Docker Tips
+
+Run all modules
+
+* `docker-compose up` and `docker-compose down`
+
+Remove all containers
+
+* `docker rm $(docker ps -q -a)`
+
+Remove all images
+
+* `docker rmi $(docker images -q -a)`
+
+Remove all volumes
+
+* `docker volume rm $(docker volume ls -q -f dangling=true)`
