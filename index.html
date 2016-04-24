@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>WABI-SABI DAM by urchinly</title>
+    <title>WABI-SABI DAM by Urchinly</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -45,8 +45,12 @@
 <h3>
 <a id="run-wab-sabi-images-locally" class="anchor" href="#run-wab-sabi-images-locally" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run WAB-SABI images locally</h3>
 
-<pre><code>docker-compose up
-http://localhost:9080/
+<pre><code>
+  docker-compose -f ../wabi/docker-compose.yml up
+  docker-compose -f ../sabi/docker-compose.yml up
+
+  http://localhost:8888/
+  http://localhost:8888/stats
 </code></pre>
 
 <h3>
@@ -57,7 +61,7 @@ http://localhost:9080/
 <h3>
 <a id="building-and-running-wabi-sabi-from-source" class="anchor" href="#building-and-running-wabi-sabi-from-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Building and running WABI-SABI from source</h3>
 
-<p>This repository is the parent repository for all wabi-sabi repositories. We are using Git submodules to group our various projects; however we recommend to clone and build each repository separately. Please see the submodules README files for instructions on how to build and run them.</p>
+<p>This repository is the parent repository of all wabi-sabi repositories. We are using Git submodules to group our various projects; however we recommend to clone and build each repository separately. Please see the submodules README files for instructions on how to build and run them.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/urchinly/wabi-sabi">WABI-SABI DAM</a> is maintained by <a href="https://github.com/urchinly">urchinly</a>.</span>
@@ -67,6 +71,6 @@ http://localhost:9080/
 
     </section>
 
-  
+
   </body>
 </html>
