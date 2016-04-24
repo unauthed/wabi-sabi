@@ -37,7 +37,7 @@ expose:
     - mongo
     - rabbitmq
   ports:
-    - '9082:8082'
+    - '8082'
   target_num_containers: 2
   volumes_from:
     - ingest
@@ -52,7 +52,7 @@ ingest:
     - mongo
     - rabbitmq
   ports:
-    - '9081:8081'
+    - '8081'
   tags:
     - demo
   volumes:

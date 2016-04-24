@@ -64,3 +64,7 @@ Remove all images
 Remove all volumes
 
 * `docker volume rm $(docker volume ls -q -f dangling=true)`
+
+Remove all networks
+
+* `docker network rm $(docker network ls -q)`
