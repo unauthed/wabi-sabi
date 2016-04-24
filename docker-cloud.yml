@@ -18,7 +18,7 @@
 #
 
 elasticsearch:
-  image: urchinly/wabi-elasticsearch
+  image: 'urchinly/wabi-elasticsearch:latest'
   labels:
     uk.urchinly.tech: data
   ports:
@@ -29,28 +29,29 @@ elasticsearch:
 expose:
   image: 'urchinly/wabi-expose:latest'
   environment:
-    - 'SPRING_DATA_MONGODB_URI=mongodb://mongo-1/wabi'
-    - 'SPRING_PROFILES_ACTIVE=prod'
-    - 'SPRING_RABBITMQ_ADDRESSES=rabbitmq-1'
-    - 'WABI_SHARE=/data/vault'
+    - 'SPRING_DATA_MONGODB_URI=mongodb://mongo-host/wabi'
+    - SPRING_PROFILES_ACTIVE=prod
+    - SPRING_RABBITMQ_ADDRESSES=rabbitmq-host
+    - WABI_SHARE=/data/vault
   links:
-    - mongo
-    - rabbitmq
+    - 'mongo:mongo-host'
+    - 'rabbitmq:rabbitmq-host'
   ports:
     - '8082'
   target_num_containers: 2
-  volumes_from:
-    - ingest
+  volumes:
+    - /tmp
+    - '/opt/wabi/vault:/data/vault'
 ingest:
   image: 'urchinly/wabi-ingest:latest'
   environment:
-    - 'SPRING_DATA_MONGODB_URI=mongodb://mongo-1/wabi'
-    - 'SPRING_PROFILES_ACTIVE=prod'
-    - 'SPRING_RABBITMQ_ADDRESSES=rabbitmq-1'
-    - 'WABI_SHARE=/data/vault'
+    - 'SPRING_DATA_MONGODB_URI=mongodb://mongo-host/wabi'
+    - SPRING_PROFILES_ACTIVE=prod
+    - SPRING_RABBITMQ_ADDRESSES=rabbitmq-host
+    - WABI_SHARE=/data/vault
   links:
-    - mongo
-    - rabbitmq
+    - 'mongo:mongo-host'
+    - 'rabbitmq:rabbitmq-host'
   ports:
     - '8081'
   tags:
@@ -69,10 +70,10 @@ mongo:
 rabbitmq:
   image: 'urchinly/wabi-rabbitmq:latest'
   environment:
-    - 'RABBITMQ_DEFAULT_PASS=guest'
-    - 'RABBITMQ_DEFAULT_USER=guest'
-    - 'RABBITMQ_DEFAULT_VHOST=/'
-    - 'RABBITMQ_ERLANG_COOKIE=wabi'
+    - RABBITMQ_DEFAULT_PASS=guest
+    - RABBITMQ_DEFAULT_USER=guest
+    - RABBITMQ_DEFAULT_VHOST=/
+    - RABBITMQ_ERLANG_COOKIE=wabi
   labels:
     uk.urchinly.tech: data
   ports:
@@ -83,13 +84,15 @@ rabbitmq:
 search:
   image: 'urchinly/wabi-search:latest'
   environment:
-    - 'SPRING_PROFILES_ACTIVE=prod'
-    - 'SPRING_RABBITMQ_ADDRESSES=rabbitmq-1'
-    - 'SPRING_ELASTICSEARCH_ADDRESSES=elasticsearch-1:9300'
+    - 'SPRING_ELASTICSEARCH_ADDRESSES=elasticsearch-host:9300'
+    - SPRING_PROFILES_ACTIVE=prod
+    - SPRING_RABBITMQ_ADDRESSES=rabbitmq-host
   links:
-    - elasticsearch
-    - rabbitmq
+    - 'elasticsearch:elasticsearch-host'
+    - 'rabbitmq:rabbitmq-host'
   ports:
     - '8088'
   volumes:
     - /tmp
+    - '/opt/wabi/vault:/data/vault'
+
