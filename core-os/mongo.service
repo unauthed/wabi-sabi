@@ -1,0 +1,11 @@
+[Unit]
+Description=Wabi Mongo
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill mongo
+ExecStartPre=-/usr/bin/docker rm mongo
+ExecStartPre=/usr/bin/docker pull mongo
+ExecStart=/usr/bin/docker run --name mongo mongo
+ExecStop=/usr/bin/docker stop mongo
